@@ -1,26 +1,38 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <tree-group :tree-data="data" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+
+import TreeGroup from '@/components/TreeGroup.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
+  components: { TreeGroup },
+  computed: {
+    ...mapState({ data: (state) => state.tree }),
   },
 };
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  font-family: 'Kanit', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 </style>
